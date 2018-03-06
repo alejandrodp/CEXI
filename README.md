@@ -1,2 +1,2 @@
 # CEX
-A language based on C with IDE included, codename C!
+A language based on C (BALCON or CEX [ C! ] ) with IDE included, codename CEXI 
