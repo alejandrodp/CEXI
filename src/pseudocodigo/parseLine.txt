@@ -1,0 +1,7 @@
+para cada regex
+	si la linea no se logra castear
+		se obtiene la linea 
+		se detiene la ejecucion del programa
+		se imprime un error en el application log
+	si sí se logra castear
+		ejecuta la linea

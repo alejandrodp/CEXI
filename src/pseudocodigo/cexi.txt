@@ -1,0 +1,13 @@
+se abre CEXI
+el usuario escribe un programa
+el usuario corre el programa
+pre-procesador de codigo (convierte el codigo en una LISTA de lineas y calcula cantidad de memoria necesaria para ejecutar)
+inicia M-SERVER
+para cada linea de codigo
+	se parsea esa linea
+	si hay errores
+		el programa se detiene
+	si no
+		se ejecuta esa linea
+		se actualiza interfaz grafica
+finaliza ejecución

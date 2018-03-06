@@ -1,0 +1,17 @@
+================UTULIZA M-SERVER=================
+Se revisa la tabla de variables
+Si las variables no estan alocadas
+	se alocan
+si si estan
+	se extrae su valor
+se ejecuta la linea con valores de las variables
+
+
+
+
+
+
+
+
+===============NO UTULIZA M-SERVER===============
+se ejecuta
