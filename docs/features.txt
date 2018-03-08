@@ -1,7 +1,9 @@
 =====DEFAULT=====
 editor de texto
 debugger grafico
-compilador, pre-procesador e interprete
+compilador
+pre-procesador
+interprete
 consola
 tabla de variables
 garbage collector
