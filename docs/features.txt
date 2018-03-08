@@ -1,0 +1,19 @@
+=====DEFAULT=====
+editor de texto
+debugger grafico
+compilador, pre-procesador e interprete
+consola
+tabla de variables
+garbage collector
+administrador de memoria
+interfaz grafica
+
+
+
+=====EXTRAS=====
+nightmode
+seleccion de tipo de compilación (personalizada, automatica-segura, automatica-insegura)
+paginacion
+syntax checker
+cambiar variables en caliente
+salvar y cargar archivos.cex

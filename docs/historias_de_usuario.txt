@@ -1,0 +1,8 @@
+yo como programador quiero un editor de texto para escribir y editar mi programa
+yo como programador quiero debuggear gráficamente mis programas
+yo como programador quiero correr gráficamente mis programas
+yo como programador quiero ver los prints que hace mi programa
+yo como programador quiero ver lo errores que tiene mi programa en tiempo de ejecución
+yo como programador quiero ver el estado de mis variables, su valor y la cantida
+yo como programador quiero un garbage colector para que libere memoria cuando no la estoy usando
+yo como programador quiero un modilo que manipule directamente la memoria de mis programas
