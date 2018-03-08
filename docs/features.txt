@@ -1,14 +1,14 @@
 =====DEFAULT=====
-editor de texto
-debugger grafico
-compilador
-pre-procesador
-interprete
-consola
-tabla de variables
-garbage collector
-administrador de memoria
-interfaz grafica
+	editor de texto
+	debugger grafico
+	compilador
+	pre-procesador
+	interprete
+	consola
+	tabla de variables
+	garbage collector
+	administrador de memoria
+	interfaz grafica
 
 
 
