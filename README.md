@@ -18,5 +18,6 @@ Y si es necesario, el cuerpo del mensaje debe tener una explicación un poco mas
 **Se creó una función que imprime strings en la consola cuando el usuario da in input al programa.**
   
 
-
+```
 Alejandro Díaz y Fabián Montero
+```
