@@ -1,1 +1,4 @@
-VER COMO HACE PYTHON
+Se inicia el server
+Cuando se ejecuta un programa se recibe el tamaño de alocación necesaria
+Garbage collector se ejecuta cuando se hace una declaración, una asignación o una derreferenciación
+Si un programa hace una solicitud de un valor, el mserver debe responder con el valor de la variable o un resultado null si la variable no existe.
