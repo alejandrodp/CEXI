@@ -16,7 +16,7 @@ Los titulos de los commits deben ser como estos ejemplos:
 Y si es necesario, el cuerpo del mensaje debe tener una explicación un poco mas grande del commit:
 ```
 [ADD] Añade función para imprimir strings.  
-	Se creó una función que imprime strings en la consola cuando el usuario da in input al programa.
+	Se creó una función que imprime strings en la consola cuando el usuario da un input al programa.
 ```
   
 
