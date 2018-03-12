@@ -6,3 +6,4 @@ BIN = ./out/bin
 all : ./src/launcher.cpp
 	@$(COMPILER) ./src/launcher.cpp -o $(TEMP)/launcher.o
 	@$(COMPILER) -o $(BIN)/launcher $(TEMP)/launcher.o
+	
