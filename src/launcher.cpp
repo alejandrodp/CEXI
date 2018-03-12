@@ -1,14 +1,5 @@
-#include <iostream>
+#include <iostream> 
 
-using namespace std;
-
-int main() 
-{
-	cout << "Hello" << endl;
-
-	int numero1 = 11;
-
-	cout << numero1 << " endl " << endl;
-
-    return 0;
+int main() {
+    std::cout << "Hello" << std::endl;
 }
