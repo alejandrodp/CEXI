@@ -65,3 +65,6 @@ CMakeLists.txt.user*
 
 
 # End of https://www.gitignore.io/api/qt,linux,visualstudiocode
+
+
+out/
