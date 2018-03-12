@@ -1,0 +1,7 @@
+recibe una string
+
+la procesa
+    sistituye:
+        
+
+retorna una string
