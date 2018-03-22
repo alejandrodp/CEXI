@@ -4,9 +4,10 @@
 # include <sstream>
 # include <fstream>
 # include <iterator>
+#include "compiler.h"
 
 
-std::string *preprocessor(std::string path){
+std::string * Compiler::preprocessor(std::string path){
     using namespace std;
 
     ifstream source_file (path);

@@ -2,9 +2,10 @@
 #define COMPILER
 
 #include <iostream>
+#include <string>
 
 class Compiler {
-private:
+public:
 
     /**
      * @brief Takes a file and returns a cleaned string of its contents.

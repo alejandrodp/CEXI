@@ -1,11 +1,14 @@
-#include "compiler.h"
+#include "cexi/compiler/compiler.h"
+#include <iostream>
+
+using namespace std;
 
 // TODO: arreglar el include
 int main() {
 
-    auto *file = compiler::preprocessor("/home/fabian/Documents/repos/datos2/CEX/examples/helloworld.cex")
+    Compiler file;
 
-    cout << file << endl;
+    file.preprocessor("/home/alejo/Programs/AED/CEX/examples/helloworld.cex");
 
     return 0;
 }
