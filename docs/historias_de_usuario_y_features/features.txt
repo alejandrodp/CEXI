@@ -1,4 +1,19 @@
 =====DEFAULT=====
+    Debugger
+    Intérpreter
+    
+    program output
+    
+    log console
+    
+    Variables table
+    
+    Datatype personalized
+    
+    Memory server
+    Garbage collector
+    
+    
 	editor de texto
 	debugger grafico
 	compilador
