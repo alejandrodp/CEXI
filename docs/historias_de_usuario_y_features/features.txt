@@ -14,7 +14,7 @@
     Garbage collector
     
     
-	editor de texto
+	/*editor de texto
 	debugger grafico
 	compilador
 	pre-procesador
@@ -23,7 +23,7 @@
 	tabla de variables
 	garbage collector
 	administrador de memoria
-	interfaz grafica
+	interfaz grafica*/
 
 
 
