@@ -1,9 +1,14 @@
 Toda la comunicación entre el servidor y el IDE, debe ser a través del formato JSON, se sigue el siguiente estándar para cada una de las operaciones descritas a continuación:
 
 TODOS los mensajes deben contener la siguiente llave:
-    OPERATION: El nombre de la operación a realizar en el servidor (asignación, derreferenciación, etc).
+    OPERATION: El nombre de la operación a realizar en el servidor (asignación, derreferenciación, etc)
+    Los tipos de operación permitidos son los siguientes:
+        ASSIGNATION
+        ACCESS
+        CHANGE
+        DELETE
 
-1. Asignación:
+1. Asignación - ASSIGNATION:
 El mensaje debe contener las siuientes llaves:
     TYPE: Consiste en el tipo de variable a crear (interger, string, etc).
     NAME: El nombre de la variable a crear.
@@ -14,7 +19,7 @@ Las respuestas a este mensaje puede ser positiva a negativa como se especifica a
     Positiva: Un mensaje con la llave RESULT y con valor true.
     Negativa: Un mensaje con la llave RESULT y con valor false.
     
-2. Derreferenciación
+2. Derreferenciación - ACCESS
 El mensaje debe contener las siuientes llaves:
     TYPE: El tipo de variable a retornar (interger, string, etc).
     NAME: El nombre de la variable a retornar.
@@ -24,7 +29,7 @@ Las respuestas a este mensaje puede ser positiva a negativa como se especifica a
         VALUE: El valor de la variable consultada.
     Negativa: Un mensaje vacío.
     
-3. Cambio de valor de alguna variable:
+3. Cambio de valor de alguna variable - CHANGE:
 El mensaje debe contener las siguientes llaves:
     TYPE: Consiste en el tipo de variable a modificar (interger, string, etc).
     NAME: El nombre de la variable.
@@ -35,7 +40,7 @@ Las respuestas a este mensaje puede ser positiva a negativa como se especifica a
     Negativa: Un mensaje con la llave RESULT y con valor false.
     
     
-4. Eliminación:
+4. Eliminación - DELETE:
 El mensaje debe contener las siuientes llaves:
     TYPE: Consiste en el tipo de variable a modificar (interger, string, etc).
     NAME: El nombre de la variable.
