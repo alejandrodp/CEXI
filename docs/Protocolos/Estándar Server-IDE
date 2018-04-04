@@ -2,11 +2,12 @@ Toda la comunicación entre el servidor y el IDE, debe ser a través del formato
 
 TODOS los mensajes deben contener la siguiente llave:
     OPERATION: El nombre de la operación a realizar en el servidor (asignación, derreferenciación, etc)
-    Los tipos de operación permitidos son los siguientes:
+    Los tipos de operación permitidos en el mensaje son los siguientes:
         ASSIGNATION
         ACCESS
         CHANGE
         DELETE
+        SCOPE
 
 1. Asignación - ASSIGNATION:
 El mensaje debe contener las siuientes llaves:
@@ -48,3 +49,7 @@ El mensaje debe contener las siuientes llaves:
 Las respuestas a este mensaje puede ser positiva a negativa como se especifica a continuación:
     Positiva: Un mensaje con la llave RESULT y con valor true.
     Negativa: Un mensaje con la llave RESULT y con valor false.
+    
+5. Señales sobre los alcances - SCOPE:
+El mensaje debe contener las siuientes llaves:
+    SCOPE: Debe contener alguna señal de estas: NEW (se creó un nuevo scope), CLOSE (se cierra el scope actual).
