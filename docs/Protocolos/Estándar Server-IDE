@@ -1,0 +1,45 @@
+Toda la comunicación entre el servidor y el IDE, debe ser a través del formato JSON, se sigue el siguiente estándar para cada una de las operaciones descritas a continuación:
+
+TODOS los mensajes deben contener la siguiente llave:
+    OPERATION: El nombre de la operación a realizar en el servidor (asignación, derreferenciación, etc).
+
+1. Asignación:
+El mensaje debe contener las siuientes llaves:
+    TYPE: Consiste en el tipo de variable a crear (interger, string, etc).
+    NAME: El nombre de la variable a crear.
+    SIZE: El tamaño de la variable, en bytes.
+    VALUE: El valor que contendrá la variable.
+    
+Las respuestas a este mensaje puede ser positiva a negativa como se especifica a continuación:
+    Positiva: Un mensaje con la llave RESULT y con valor true.
+    Negativa: Un mensaje con la llave RESULT y con valor false.
+    
+2. Derreferenciación
+El mensaje debe contener las siuientes llaves:
+    TYPE: El tipo de variable a retornar (interger, string, etc).
+    NAME: El nombre de la variable a retornar.
+    
+Las respuestas a este mensaje puede ser positiva a negativa como se especifica a continuación:
+    Positiva: Un mensaje con las siguientes llaves:
+        VALUE: El valor de la variable consultada.
+    Negativa: Un mensaje vacío.
+    
+3. Cambio de valor de alguna variable:
+El mensaje debe contener las siguientes llaves:
+    TYPE: Consiste en el tipo de variable a modificar (interger, string, etc).
+    NAME: El nombre de la variable.
+    VALUE: El nuevo valor para asignar.
+    
+Las respuestas a este mensaje puede ser positiva a negativa como se especifica a continuación:
+    Positiva: Un mensaje con la llave RESULT y con valor true.
+    Negativa: Un mensaje con la llave RESULT y con valor false.
+    
+    
+4. Eliminación:
+El mensaje debe contener las siuientes llaves:
+    TYPE: Consiste en el tipo de variable a modificar (interger, string, etc).
+    NAME: El nombre de la variable.
+    
+Las respuestas a este mensaje puede ser positiva a negativa como se especifica a continuación:
+    Positiva: Un mensaje con la llave RESULT y con valor true.
+    Negativa: Un mensaje con la llave RESULT y con valor false.
