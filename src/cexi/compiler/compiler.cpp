@@ -4,9 +4,12 @@
 # include <sstream>
 # include <fstream>
 # include <iterator>
+# include <cstdlib>
+
+# include "compiler.h"
 
 
-std::string *preprocessor(std::string path){
+std::string Compiler::preprocess(std::string path){
     using namespace std;
 
     ifstream source_file (path);
@@ -18,13 +21,16 @@ std::string *preprocessor(std::string path){
     regex ppe_tab ("\t+");
     regex ppe_comment ("//.+\n");
 
-    auto *temp = new string;
-    *temp = regex_replace (source_file_as_string , ppe_comment , " ");
-    *temp = regex_replace (*temp , ppe_new_line , "");
-    *temp = regex_replace (*temp , ppe_white_space , " ");
-    *temp =  regex_replace (*temp , ppe_tab , " ");
+    string temp = "";
 
-    cout << "File processed: " << *temp << endl;
+    temp = regex_replace (source_file_as_string , ppe_comment , " ");
+    temp = regex_replace (temp , ppe_new_line , "");
+    temp = regex_replace (temp , ppe_white_space , " ");
+    temp =  regex_replace (temp , ppe_tab , " ");
+
+    cout << "compiler.process\n\tfile processed: " << temp << endl;
 
     return temp;
 }
+
+

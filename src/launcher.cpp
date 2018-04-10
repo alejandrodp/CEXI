@@ -1,17 +1,15 @@
-//#include "compiler.h"
-# include <iostream>
-// TODO: arreglar el include
+#include "cexi/compiler/compiler.h"
+#include <iostream>
+
+using namespace std;
+
 int main() {
 
-/*
-    auto *file = compiler::preprocessor("/home/fabian/Documents/repos/datos2/CEX/examples/helloworld.cex")
+    Compiler cexi;
 
-    cout << file << endl;
-*/
+    cexi.preprocess("/home/fabian/Documents/repos/datos2/CEX/examples/helloworld.cex");
+    cexi.compile();
 
-    int *values[5];
-
-    std::cout << values << std::endl;
 
     return 0;
 }
