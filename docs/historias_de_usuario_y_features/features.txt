@@ -1,5 +1,20 @@
 =====DEFAULT=====
-	editor de texto
+    Debugger
+    Intérpreter
+    
+    program output
+    
+    log console
+    
+    Variables table
+    
+    Datatype personalized
+    
+    Memory server
+    Garbage collector
+    
+    
+	/*editor de texto
 	debugger grafico
 	compilador
 	pre-procesador
@@ -8,7 +23,7 @@
 	tabla de variables
 	garbage collector
 	administrador de memoria
-	interfaz grafica
+	interfaz grafica*/
 
 
 

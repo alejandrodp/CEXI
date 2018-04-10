@@ -1,8 +1,14 @@
-yo como programador quiero un editor de texto para escribir y editar mi programa
-yo como programador quiero debuggear gráficamente mis programas
-yo como programador quiero correr gráficamente mis programas
-yo como programador quiero ver los prints que hace mi programa
-yo como programador quiero ver lo errores que tiene mi programa en tiempo de ejecución
-yo como programador quiero ver el estado de mis variables, su valor y la cantida
-yo como programador quiero un garbage colector para que libere memoria cuando no la estoy usando
-yo como programador quiero un modilo que manipule directamente la memoria de mis programas
+
+CEX (C!), lenguaje basado en C.
+
+H1 yo como programador quiero ejecutar programas al estilo del depurador, para ver la ejecución de cada línea.
+
+H2 yo como programador, quiero una interfaz para ver la salida de mis programas.
+
+H3 yo como programador, quiero una interfaz para ver cualquier error que se pueda producir, en los programas o en el IDE como tal, además de los eventos normales que ocurran.
+
+H4 Yo como programador, quiero una interfaz para ver el estado de mis variables, su valor, dirección de memoria, etiqueta y la cantidad de referencias activas.
+
+H5 Yo como programador quiero que se creen los siguientes tipos de dato, para usarlos luego en mis programas.
+
+H6 Yo como programador quiero un módulo que administre automáticamente la memoria de mis programas.

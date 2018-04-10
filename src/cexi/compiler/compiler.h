@@ -13,6 +13,7 @@ public:
      * @param path path of the file to process
      * @return std::string* pointer of the clean string
      */
+<<<<<<< HEAD
     std::string preprocess(std::string path);
     
     /**
@@ -34,4 +35,10 @@ public:
 
 
 
+=======
+    std::string * preprocessor(std::string path);
+
+
+};
+>>>>>>> 5b4cddb191eb5afed8e9f70a6b90c06f2f4d4faa
 #endif

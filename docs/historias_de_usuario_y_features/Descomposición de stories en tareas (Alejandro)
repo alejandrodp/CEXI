@@ -1,0 +1,15 @@
+Yo como programador quiero un módulo que administre automáticamente la memoria de mis programas.
+    Crear módulo externo que contendrá todos lo componentes.
+    Establecer parámetros de incialización del módulo (puerto y memoria total a reservar).
+    Adaptar sistema de memoria virtual al módulo.
+    Establecer protocolos para comunicación con el IDE.
+    Implementar patrón observer para enviar registro de eventos y estado de variables a las interfaces del IDE respectivas.
+    Crear administrador de variables y recolector de basura.
+
+Yo como programador, quiero una interfaz para ver el estado de mis variables, su valor, dirección de memoria, etiqueta y la cantidad de referencias activas.
+    Implementar patrón observer para recibir las actualizaciones del administrador de memoria.
+    Implementar en la interfaz gráfica panel para mostrar los resultados.
+    
+Yo como programador, quiero una interfaz para ver cualquier error que se pueda producir, en los programas o en el IDE como tal, además de los eventos normales que ocurran.
+    Implementar patrón observer para recibir registro de eventos del administrador de memoria.
+    Implementar librería de logging o algo similar.

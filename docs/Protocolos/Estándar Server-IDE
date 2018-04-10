@@ -1,0 +1,103 @@
+Toda la comunicación entre el servidor y el IDE, debe ser a través de objetos JSON, se sigue el siguiente estándar para cada una de las operaciones descritas a continuación:
+
+TODOS los mensajes deben contener la siguiente llave:
+    OPERATION: El nombre de la operación a realizar en el servidor (asignación, derreferenciación, etc)
+    Los tipos de operación permitidos en el mensaje son los siguientes:
+        ASSIGNATION (Asignación de un variable de tipo primitivo)
+        ACCESS (Derreferenciación de variables)
+        CHANGE (Modificación del valor de una variable)
+        DELETE (Eliminación de una variable)
+        SCOPE (Creación o cierre de alcances)
+        STRUCT (Definición de estructuras o solocitud de valores)
+        ADDRESS (Para la función getAddr)
+        POINTER (Declaración de punteros)
+        ARRAY (Declaración de arreglos)
+
+1. Asignación - ASSIGNATION:
+El mensaje debe contener las siuientes llaves:
+    TYPE: Consiste en el tipo de variable a crear (interger, string, etc).
+    NAME: El nombre de la variable a crear.
+    SIZE: El tamaño de la variable, en bytes.
+    VALUE (opcional): Si se está declarando y asignando al mismo tiempo, enviar el valor respectivo, si no, entonces enviar NULL.
+    
+Las respuestas a este mensaje puede ser positiva a negativa como se especifica a continuación:
+    Positiva: Un mensaje con la llave RESULT, con el valor true, y una llave MESSAGE con un mensaje de respuesta.
+    Negativa: Un mensaje con la llave RESULT, con el valor false, y una llave MESSAGE con un mensaje de respuesta.
+    
+2. Derreferenciación - ACCESS
+El mensaje debe contener las siuientes llaves:
+    NAME: El nombre de la variable a retornar.
+    
+Las respuestas a este mensaje puede ser positiva a negativa como se especifica a continuación:
+    Positiva: Un mensaje con las siguientes llaves:
+        VALUE: El valor de la variable consultada.
+        TYPE: El tipo de la variable consultada.
+    Negativa: Un mensaje con las siguientes llaves:
+        VALUE: Valor NULL.
+    
+3. Cambio de valor de alguna variable - CHANGE:
+El mensaje debe contener las siguientes llaves:
+    NAME: El nombre de la variable.
+    VALUE: El nuevo valor para asignar.
+    TYPE: El tipo del nuevo valor.
+    
+Las respuestas a este mensaje puede ser positiva a negativa como se especifica a continuación:
+    Positiva: Un mensaje con la llave RESULT, con el valor true, y una llave MESSAGE con un mensaje de respuesta.
+    Negativa: Un mensaje con la llave RESULT, con el valor false, y una llave MESSAGE con un mensaje de respuesta.
+    
+    
+4. Eliminación - DELETE:
+El mensaje debe contener las siuientes llaves:
+    NAME: El nombre de la variable.
+    
+Las respuestas a este mensaje puede ser positiva a negativa como se especifica a continuación:
+    Positiva: Un mensaje con la llave RESULT, con el valor true, y una llave MESSAGE con un mensaje de respuesta.
+    Negativa: Un mensaje con la llave RESULT, con el valor false, y una llave MESSAGE con un mensaje de respuesta.
+    
+5. Señales sobre los alcances - SCOPE:
+El mensaje debe contener las siuientes llaves:
+    SCOPE: Debe contener alguna señal de estas: NEW (se creó un nuevo scope), CLOSE (se cierra el scope actual).
+    
+6. Señales sobre los structs - STRUCT:
+Para definir un struct:
+    STRUCT: Con el valor NEW.
+    NAME: El nombre de la nueva estrucutra.
+    
+Seguidamente use la operación ASSIGNATION para crear las variables que componen el struct.
+Al terminar la definición se envía el valor CLOSE en la llave STRUCT.
+
+Para obtener valores de las estructuras coloque las siguientes llaves:
+    STRUCT: con el valor GET.
+    NAME: Nombre de la variable en la estructura.
+Para cambiar el valor de alguna variable en la estructura coloque las siguientes llaves:
+    STRUCT: con el valor CHANGE.
+    NAME: Nombre de la variable en la estructura.
+    VALOR: Nuevo valor para la variable.
+    
+7. Señales sobre la función getAddr - ADDRESS:
+Para definir uno de estos coloque las siguientes llaves:
+    NAME: Nombre de la variable a buscar.
+
+Las respuestas a este mensaje puede ser positiva o negativa como se especifica a continuación:
+    Positiva: Una llave RESULT con el valor true, y una llave VALUE con el valor requerido.
+    Negativo: Una llave RESULT con el valor false, y una llave VALUE con el valor requerido.
+    
+8. Declaración de punteros - POINTER:
+Para definir uno de estos coloque las siguientes llaves:
+    NAME: Nombre de la variable.
+    TYPE: El tipo de variable a apuntar.
+    VALUE (opcional): Si se está declarando y asignando al mismo tiempo, enviar el valor respectivo, si no, entonces enviar NULL.
+
+Para derreferenciar el valor de uno de estos, con la función getVal, utilice la operación ACCESS.
+
+9. Declaración de arreglos - ARRAY:
+Para definir uno de estos coloque las siguientes llaves:
+    ARRAY: NEW
+    NAME: Nombre de la variable.
+    TYPE: El tipo de variable a almacenar.
+    SIZE: La cantidad de espacios en memoria solicitados.
+    
+Para obtener valores:
+    ARRAY: GET
+    NAME: Nombre del arreglo.
+    POS: Indice del valor.
