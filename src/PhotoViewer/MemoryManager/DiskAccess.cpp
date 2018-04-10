@@ -6,6 +6,8 @@
 #include <iostream>
 #include <sstream>
 #include "DiskAccess.h"
+#include <stdio.h>
+#include <string>
 
 void *DiskAccess::readFromDisk(int pageNumber) {
     stringstream string;
@@ -15,6 +17,7 @@ void *DiskAccess::readFromDisk(int pageNumber) {
     void * data = calloc(1024, 1024 * 4);
     file.read((char *)data, 0x400000);
     file.close();
+
     return data;
 }
 

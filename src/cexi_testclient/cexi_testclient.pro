@@ -1,15 +1,17 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2018-04-03T18:35:47
+# Project created by QtCreator 2018-04-07T20:05:27
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = CEXI
+TARGET = cexi_testclient
 TEMPLATE = app
+
+QMAKE_CXXFLAGS = -std=gnu++11
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
@@ -25,23 +27,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        ideclass.cpp \
-    ideclass.cpp \
-    main.cpp \
-    ../compiler/compiler.cpp \
-    ../interpreter/interpreter.cpp \
-    ../MemoryManager/DiskAccess.cpp \
-    ../MemoryManager/MemoryManager.cpp \
-    ../MemoryManager/MMU.cpp
+        mainwindow.cpp
 
 HEADERS += \
-        ideclass.h \
-    ideclass.h \
-    ../compiler/compiler.h \
-    ../interpreter/interpreter.h \
-    ../MemoryManager/DiskAccess.h \
-    ../MemoryManager/MemoryManager.h \
-    ../MemoryManager/MMU.h
+        mainwindow.h
 
 FORMS += \
-        ideclass.ui
+        mainwindow.ui

@@ -11,6 +11,7 @@
 #include "DiskAccess.h"
 #include <cstring>
 #include "bitset"
+#include <QObject>
 
 using namespace std;
 
@@ -18,17 +19,17 @@ using namespace std;
  * @brief Class used to manage the virtual memory that is being simulated.
  */
 
-class MemoryManager{
+class MemoryManager : public QObject {
+
+    /**
+     * QObject MACRO
+     */
+
+    Q_OBJECT
 
     friend class MMU;
 
 private:
-
-    /**
-     * @brief Pointer to the memory that is being used.
-     */
-
-    void * mem;
 
     /**
      * @brief Constructor used initialize the memory used for the program.
@@ -36,7 +37,14 @@ private:
      * @param size Amount of memory to use for the program
      * @param parent Pointer used by QT
      */
-    explicit MemoryManager(int size);
+
+    explicit MemoryManager(int size, QObject * parent = nullptr);
+
+    /**
+     * @brief Pointer to the memory that is being used.
+     */
+
+    void * mem;
 
     ~MemoryManager();
 
@@ -105,6 +113,13 @@ public:
          */
         bitset<8> usage;
     };
+
+signals:
+
+    /**
+     * @brief Signal to notify changes in the MemoryManager's pages
+     */
+    void change(MemoryManager::listNode pages);
 
 protected:
 

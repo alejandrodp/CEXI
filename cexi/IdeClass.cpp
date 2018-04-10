@@ -1,4 +1,4 @@
-#include "ideclass.h"
+#include "IdeClass.h"
 #include "ui_ideclass.h"
 
 IdeClass::IdeClass(QWidget *parent) :

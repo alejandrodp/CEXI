@@ -53,7 +53,7 @@ bitset<32> MemoryManager::allocate(int size) {
 
     emit change(*pageList);
 
-    QThread::sleep(0.5);
+    //QThread::sleep(0.5);
 
     return newAddress;
 }
@@ -123,7 +123,7 @@ void MemoryManager::loadPage(int page) {
 
     emit change(*pageList);
 
-    QThread::sleep(0.5);
+    //QThread::sleep(0.5);
 }
 
 void *MemoryManager::dereference(bitset<32> address) {
