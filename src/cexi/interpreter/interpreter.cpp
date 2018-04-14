@@ -17,7 +17,6 @@
  *      operacion
  *      scope
  * identificar cual es
- * ejecutar la picha esta
  * 
  * 
  */
