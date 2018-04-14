@@ -1,16 +1,12 @@
-#include "cexi/compiler/compiler.h"
+#include "cexi/interpreter/interpreter.h"
 #include <iostream>
-
-using namespace std;
+# include <regex> 
 
 int main() {
 
-    Compiler cexi;
+    Interpreter cexi;
 
-    cexi.preprocess("/home/fabian/Documents/repos/datos2/CEX/examples/helloworld.cex");
-    cexi.compile();
-
+    cexi.run("/home/fabian/Documents/repos/datos2/CEX/examples/helloworld.cex");
 
     return 0;
 }
-  

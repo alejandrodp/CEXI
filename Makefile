@@ -2,26 +2,28 @@ CXX = g++ -std=c++11 -Wall
 SRC = ./src/
 TEMP = ./out/temp/
 BIN = ./out/bin/
-INCLUDES = -I$(SRC)cexi/compiler/compiler -I$(SRC)cexi/interpreter/interpreter
+INCLUDES =  -I$(SRC)cexi/interpreter/interpreter
 
-build_all: compiler.o launcher.o
-	@$(CXX) $(TEMP)launcher.o $(TEMP)compiler.o -o $(BIN)launcher
-	@echo "Done"
+all: interpreter.o launcher.o calculator.o
+	@$(CXX) $(TEMP)launcher.o $(TEMP)interpreter.o -o $(BIN)executable
+	@echo ""
+	@$(BIN)executable
+
+interpreter.o: $(SRC)cexi/interpreter/interpreter.cpp $(SRC)cexi/interpreter/interpreter.h
+	@$(CXX) -c $(INCLUDES) $(SRC)cexi/interpreter/interpreter.cpp -o $(TEMP)interpreter.o
+	@echo "Interpeter compiled!!"	
+
+calculator.o: $(SRC)cexi/interpreter/calculator.cpp $(SRC)cexi/interpreter/calculator.h
+	@$(CXX) -c $(INCLUDES) $(SRC)cexi/interpreter/calculator.cpp -o $(TEMP)calculator.o 
+	@echo "Calculator compiled!!"
 
 launcher.o: $(SRC)launcher.cpp
 	@$(CXX) -c $(INCLUDES) ./src/launcher.cpp -o $(TEMP)launcher.o
-	@echo "Launcher class compiled!!"
-
-build_and_run_all: build_all
-	@$(BIN)launcher
-	@echo ""
-
-compiler.o: $(SRC)cexi/compiler/compiler.cpp $(SRC)cexi/compiler/compiler.h
-	@$(CXX) -c $(SRC)cexi/compiler/compiler.cpp -o $(TEMP)compiler.o
-	@echo "Compiler class compiled!!"
+	@echo "Launcher compiled!!"
 
 .PHONY: clean
 clean:
 	@rm ./out/temp/*.*
-	@echo "Temp files deleted!!"
+	@echo "Temp files deleted!"
+	@echo ""
 
