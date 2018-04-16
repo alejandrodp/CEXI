@@ -1,12 +1,12 @@
+#include "Scope.h"
 #include <iostream>
-#include "SimpleList.h"
 
 /**
  * @brief Construct a new Simple List:: Simple List object
  * Este es el constructor de la lista Simple.
- * 
+ *
  */
-SimpleList::SimpleList() {
+Scope::Scope() {
     this->root = nullptr;
     this->size = 0;
 }
@@ -14,9 +14,9 @@ SimpleList::SimpleList() {
 /**
  * @brief Destroy the Simple List:: Simple List object
  * El destructor borra cada nodo que fue creado liberando la memoria.
- * 
+ *
  */
-SimpleList::~SimpleList(){
+Scope::~Scope(){
     if(this->size == 1){
         delete root;
         root = nullptr;
@@ -38,9 +38,8 @@ SimpleList::~SimpleList(){
  * Añade nuevos elementos a la lista en el final.
  * @param value El vlor quese desea añadir
  */
-void SimpleList::AddEnd(std::bitset<32> address){
+void Scope::AddNew(){
     struct Node* adding = new struct Node;
-    adding->address = address;
     adding->next = nullptr;
     if (root == nullptr){
          root = adding;
@@ -54,43 +53,51 @@ void SimpleList::AddEnd(std::bitset<32> address){
     this->size++;
 }
 
-void SimpleList::changeElm(std::bitset<32> value, int pos)
-{
-    Node * temp = this->root;
-
-    for(int i=0; i!=pos; i++){
-        temp = temp->next;
-    }
-
-    temp->address = value;
-}
-
 /**
  * @brief Get values of certain position
  * Obtiene elementos en una posición determinada
  * @param pos Posición en la lista
  * @return int El elemento solicitado
  */
-std::bitset<32> SimpleList::getValue(int pos){
+VarStorage * Scope::getValue(int pos){
     if(pos == 0){
-        return root->address;
+        return root->variables;
     }else{
         struct Node* searching = root;
-        for(int i=0; i<pos; i++){
+        for(int i=0; i != pos; i++){
             searching = searching->next;
         }
-        if(searching->next == nullptr) return searching->address; else return searching->next->address;
+        return searching->variables;
     }
 }
 
 /**
  * @brief Get size of list
  * Obtiene el tamaño de la lista
- * @return int 
+ * @return int
  */
-int SimpleList::getSize(){
+int Scope::getSize(){
 
     return this->size;
 
 }
 
+void Scope::deleteEnd()
+{
+    struct Node* pivot = root;
+    while (pivot->next != nullptr){
+        pivot = pivot->next;
+    }
+
+    delete pivot->next;
+    pivot->next = nullptr;
+}
+
+VarStorage * Scope::getEndValue()
+{
+    struct Node* searching = root;
+    for(int i=0; i != this->size-1; i++){
+        searching = searching->next;
+    }
+    return searching->variables;
+}

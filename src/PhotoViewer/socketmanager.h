@@ -12,7 +12,7 @@ class SocketManager : public QTcpServer
 public:
     SocketManager(QObject * parent = 0);
     bool startServer(quint16 port);
-    bool sendMsg(const QString text);
+    bool sendMsg(const QByteArray text);
 protected:
     void incomingConnection(qintptr handle);
 signals:

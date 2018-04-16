@@ -14,7 +14,7 @@ bool SocketManager::startServer(quint16 port)
     return listen(QHostAddress::Any, port);
 }
 
-bool SocketManager::sendMsg(const QString text)
+bool SocketManager::sendMsg(const QByteArray text)
 {
     if(clientSocket != nullptr){
         QTextStream T(clientSocket);
