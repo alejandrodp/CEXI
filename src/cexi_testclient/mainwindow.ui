@@ -29,6 +29,141 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <item>
+          <property name="text">
+           <string>Declaration: int number</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Declaration: char letter</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Declaration: long largo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Declaration: double doble</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Declaration: float flotante</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Declaration: bool booleano</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Declaration: reference&lt;int&gt; data</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Declaration: struct Node;</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Declaration: struct end signal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Change: int number = 3</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Change: char letter = t</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Change: long largo = 123456789123456789</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Change: double doble = 4.56234</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Change: float flotante = 2.67</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Change: bool booleano = true</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Change: reference&lt;int&gt; = number</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Change: Node.number = 23</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>GET: number</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>GET: letter</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>GET: largo</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>GET: doble</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>GET: flotante</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>GET: booleano</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>GET: data</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>GET: Node addres</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>GET: Node mem number</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>GET: Node mem flotante</string>
+          </property>
+         </item>
         </widget>
        </item>
       </layout>
@@ -41,14 +176,7 @@
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QListWidget" name="listItem_servMessages">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
+        <widget class="QPlainTextEdit" name="serverConsole"/>
        </item>
       </layout>
      </widget>

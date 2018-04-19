@@ -24,13 +24,23 @@ Launcher::Launcher(QWidget *parent) :
     localServer->setMaxPendingConnections(1);
 
     connect(localServer, &SocketManager::receivingData, [&](QByteArray request){
-        QString response = OperationsManager::makeRequest(request);
 
-        ui->textEdit_logConsole->appendPlainText("Server: " + response);
+        ui->textEdit_logConsole->appendPlainText("Client: " + QString::fromStdString(request.toStdString()));
+
+        QByteArray responseBytes = OperationsManager::getInstance()->makeRequest(request);
+
+        QString response = QString::fromStdString(responseBytes.toStdString());
+
+        if(localServer->sendMsg(responseBytes)){
+            ui->textEdit_logConsole->appendPlainText("Server: " + response);
+        }else{
+            ui->textEdit_logConsole->appendPlainText("Server: Error sending: " + response);
+        }
     });
 
     connect(localServer, &SocketManager::newClientConnected, [&](){
        ui->textEdit_logConsole->appendPlainText("Server: IDE connected.");
+       localServer->sendMsg("CONNECTION SUCCESFUL");
     });
 
     connect(localServer, &SocketManager::closeAll, [&](){
@@ -67,9 +77,25 @@ void Launcher::on_button_quitApp_clicked()
 
 void Launcher::on_button_test_clicked()
 {
-    if(localServer->sendMsg("TESTING CONNECTION")){
+    OperationsManager * op = OperationsManager::getInstance();
+
+    QJsonDocument doc;
+
+    QJsonObject obj;
+
+    obj.insert("OPERATION", "DECLARATION");
+    obj.insert("TYPE_TARGET","INT");
+    obj.insert("NAME", "number");
+
+    doc.setObject(obj);
+
+    QByteArray response = op->makeRequest(doc.toJson());
+
+    std::cout << response.toStdString() << "SERVER";
+
+    /*if(localServer->sendMsg("TESTING CONNECTION")){
         ui->textEdit_logConsole->appendPlainText("Server: Test sended");
     }else{
         ui->textEdit_logConsole->appendPlainText("Server: Error, socket not ready");
-    }
+    }*/
 }

@@ -1,103 +1,98 @@
 Toda la comunicación entre el servidor y el IDE, debe ser a través de objetos JSON, se sigue el siguiente estándar para cada una de las operaciones descritas a continuación:
 
-TODOS los mensajes deben contener la siguiente llave:
-    OPERATION: El nombre de la operación a realizar en el servidor (asignación, derreferenciación, etc)
-    Los tipos de operación permitidos en el mensaje son los siguientes:
-        ASSIGNATION (Asignación de un variable de tipo primitivo)
-        ACCESS (Derreferenciación de variables)
-        CHANGE (Modificación del valor de una variable)
-        DELETE (Eliminación de una variable)
-        SCOPE (Creación o cierre de alcances)
-        STRUCT (Definición de estructuras o solocitud de valores)
-        ADDRESS (Para la función getAddr)
-        POINTER (Declaración de punteros)
-        ARRAY (Declaración de arreglos)
+Si el mensaje no está en formato JSON, el sistema deolverá el valor de BAD_MSG, en la llaver RESULT, o si el mensaje no es un objeto json, se devolverá el valor de BAD_JSON, en la llave RESULT.
 
-1. Asignación - ASSIGNATION:
-El mensaje debe contener las siuientes llaves:
-    TYPE: Consiste en el tipo de variable a crear (interger, string, etc).
-    NAME: El nombre de la variable a crear.
-    SIZE: El tamaño de la variable, en bytes.
-    VALUE (opcional): Si se está declarando y asignando al mismo tiempo, enviar el valor respectivo, si no, entonces enviar NULL.
+TODOS los mensajes deben contener las siguientes llaves:
+    OPERATION: El nombre de la operación a realizar en el servidor.
+        Los tipos de operación permitidos en el mensaje son los siguientes:
+            DECLARATION
+            GET
+            CHANGE
+            GET_ADRRESS
+            GET_VAL
+            SCOPE
+            REPLACEMENT
+            END_PROGRAM
+    TYPE_TARGET: El tipo de variable al que se le efectuará la operación.
+        Tipos permitidos son: INT, CHAR, DOUBLE, FLOAT, LONG, BOOL, REFERENCE, STRUCT, ARRAY.
+        
+1. Declaración de variables - DECLARATION:
+    Para los tipos, integer, char, float, double, long, bool
+    incluya las siguientes llaves:
+        NAME: El nombre de la nueva variable.
+    Para el tipo reference, incluya las siguientes llaves:
+        NAME: El nombre de la nueva variable.
+        TYPE: El tipo de variable al que apuntará la referencia.
+    Para el tipo struct, incluya las siguientes llaves:
+        NAME: El nombre de la estructura.
+        SIGNAL: Al empezar con la declaración indique el valor NEW, al finalizar indique el valor END (en este caso se puede omitir la llave NAME).
+    Para el tipo array, incluya las siguientes llaves:
+        NAME: El nombre del arreglo.
+        TYPE: El tipo de arreglo que será.
+        SIZE: La cantidad de espacios del arreglo.
+    Esta operación devuelve el valor de FINISH en la llave RESULT.
     
-Las respuestas a este mensaje puede ser positiva a negativa como se especifica a continuación:
-    Positiva: Un mensaje con la llave RESULT, con el valor true, y una llave MESSAGE con un mensaje de respuesta.
-    Negativa: Un mensaje con la llave RESULT, con el valor false, y una llave MESSAGE con un mensaje de respuesta.
+2. Obtención de valores - GET:
+    Para cualquier consulta se incluirá un mensaje de respuesta con la llave RESULT y un valor de true o false según el tipo de veriable en cuestión.
+    Para cualquier tipo incluya la siguiente llave:
+        NAME: El nombre de la variable a consultar.
+    Si la variable existe se incluirá true en la llave RESULT, una llave VALUE con el valor de la variable,
+    y una llave TYPE con el tipo de datos de la variable,
+    caso contrario se indicará false en la variable RESULT y se omitirá la llave VALUE.
     
-2. Derreferenciación - ACCESS
-El mensaje debe contener las siuientes llaves:
-    NAME: El nombre de la variable a retornar.
-    
-Las respuestas a este mensaje puede ser positiva a negativa como se especifica a continuación:
-    Positiva: Un mensaje con las siguientes llaves:
-        VALUE: El valor de la variable consultada.
-        TYPE: El tipo de la variable consultada.
-    Negativa: Un mensaje con las siguientes llaves:
-        VALUE: Valor NULL.
-    
-3. Cambio de valor de alguna variable - CHANGE:
-El mensaje debe contener las siguientes llaves:
-    NAME: El nombre de la variable.
-    VALUE: El nuevo valor para asignar.
-    TYPE: El tipo del nuevo valor.
-    
-Las respuestas a este mensaje puede ser positiva a negativa como se especifica a continuación:
-    Positiva: Un mensaje con la llave RESULT, con el valor true, y una llave MESSAGE con un mensaje de respuesta.
-    Negativa: Un mensaje con la llave RESULT, con el valor false, y una llave MESSAGE con un mensaje de respuesta.
-    
-    
-4. Eliminación - DELETE:
-El mensaje debe contener las siuientes llaves:
-    NAME: El nombre de la variable.
-    
-Las respuestas a este mensaje puede ser positiva a negativa como se especifica a continuación:
-    Positiva: Un mensaje con la llave RESULT, con el valor true, y una llave MESSAGE con un mensaje de respuesta.
-    Negativa: Un mensaje con la llave RESULT, con el valor false, y una llave MESSAGE con un mensaje de respuesta.
-    
-5. Señales sobre los alcances - SCOPE:
-El mensaje debe contener las siuientes llaves:
-    SCOPE: Debe contener alguna señal de estas: NEW (se creó un nuevo scope), CLOSE (se cierra el scope actual).
-    
-6. Señales sobre los structs - STRUCT:
-Para definir un struct:
-    STRUCT: Con el valor NEW.
-    NAME: El nombre de la nueva estrucutra.
-    
-Seguidamente use la operación ASSIGNATION para crear las variables que componen el struct.
-Al terminar la definición se envía el valor CLOSE en la llave STRUCT.
+    Para estructuras:
+        Incluya las siguientes llaves:
+            SIGNAL: Si se quiere obtener un miembro escriba MEMBER, si no, escriba STRUCT;
+                Si escribe MEMBER incluya:
+                    M_NAME: El nombre del miembro.
+                    Esto retornará la llave RESULT con el valor true y la llave VALUE con el valor de la variable y la llaver TYPE con el tipo de la llave.
+                Si escribe STRUCT se retornará la dirección de memoria del struct.
+                    
 
-Para obtener valores de las estructuras coloque las siguientes llaves:
-    STRUCT: con el valor GET.
-    NAME: Nombre de la variable en la estructura.
-Para cambiar el valor de alguna variable en la estructura coloque las siguientes llaves:
-    STRUCT: con el valor CHANGE.
-    NAME: Nombre de la variable en la estructura.
-    VALOR: Nuevo valor para la variable.
-    
-7. Señales sobre la función getAddr - ADDRESS:
-Para definir uno de estos coloque las siguientes llaves:
-    NAME: Nombre de la variable a buscar.
+3. Cambio del valor de una variable - CHANGE:
+    Para todos los tipos incluya la siguiente llave:
+        NAME: El nombre de la variable buscada.
+        Si no se encuentra la variable se enviará el valor VAR_NOT_FOUNDED en la llave RESULT.
+    Para los tipos, integer, char, float, double, incluya las siguientes llaves:
+        VAL: El nuevo valor para la variable.
+    Para el tipo reference, incluya las siguientes llaves:
+        VAR: El nombre de la variable a la que apuntará la referencia.
+        Si no se encuentra la variable a apuntar, el sistema retornará el valor NOT_VAL_TO_POINT en la llave RESULT y una llave value con la variable que tiene error.
+    Para el tipo struct, incluya las siguientes llaves:
+        MEMBER: El nombre del miembro de la estructura que se modificará.
+        VAL: El nuevo valor para el miembro.
+        Este tipo retornará false en la llave RESULT si no existe el miembro de la estructura o la estructura como tal.
+        Caso contrario se retornará true en la llave RESULT.
+    Para el tipo array, incluya las siguientes llaves:
+        POS: La posición del arreglo a editar.
+        VAL: El nuevo valor para el campo.
+        Este tipo retornará false en la llave RESULT si la posición indicada no existe en el rango.
+        En caso contrario se retornará true en la llave RESULT.
 
-Las respuestas a este mensaje puede ser positiva o negativa como se especifica a continuación:
-    Positiva: Una llave RESULT con el valor true, y una llave VALUE con el valor requerido.
-    Negativo: Una llave RESULT con el valor false, y una llave VALUE con el valor requerido.
-    
-8. Declaración de punteros - POINTER:
-Para definir uno de estos coloque las siguientes llaves:
-    NAME: Nombre de la variable.
-    TYPE: El tipo de variable a apuntar.
-    VALUE (opcional): Si se está declarando y asignando al mismo tiempo, enviar el valor respectivo, si no, entonces enviar NULL.
+4. Uso de la función getAddr() - GET_ADDRESS:
+    Para cualquier tipo, si se ejecuta esta función se retornará true en la llave RESULT
+    si la variable consultada existe, además de la llave VALUE con la dirección de memoria respectiva,
+    en caso contrario, se retornará false en la llave RESULT.
 
-Para derreferenciar el valor de uno de estos, con la función getVal, utilice la operación ACCESS.
-
-9. Declaración de arreglos - ARRAY:
-Para definir uno de estos coloque las siguientes llaves:
-    ARRAY: NEW
-    NAME: Nombre de la variable.
-    TYPE: El tipo de variable a almacenar.
-    SIZE: La cantidad de espacios en memoria solicitados.
+5. Uso de la función getVal() - GET_VAL:
+    Esta función solo funciona con los tipos reference, y se retornará true en la llave RESULT junto con la llave VALUE,
+    que contendrá el valor consultado y la llave TYPE con el tipo de la variable apntada,
+    si la variable existe, en caso contrario, se retornará el valor de false en llave RESULT.
+    Si la variable no ha sido inicializada se delverá not_assign.
     
-Para obtener valores:
-    ARRAY: GET
-    NAME: Nombre del arreglo.
-    POS: Indice del valor.
+6. Uso de alcances - SCOPE:
+    Para declarar un alcance incluya la siguiente llave:
+        ACTION: Con el valor NEW si el scope se está abriendo, y con el valor CLOSE, si e scope se está cerrando.
+
+7. Asignación de variables - REPLACEMENT:
+    Para cualquier tipo, incluya las siguientes llaves:
+        NAME: El nombre de la variable a reemplazar.
+        VAR_TARGET: El nombre de la variable reemplazo.
+        Este tipo retorna false en a llave RESULT en caso de que alguna de las dos variables no exista
+        y un llave VAR con el nombre de la variable inexistente,
+        además retorna true en la llave RESULT en caso que todo salga bien.
+        
+8. Finalización del programa - END_PROGRAM:
+    Al finalizar el programa, se debe enviar END_PROGRAM en la llave OPERATION,
+    esto retornará false en la llave RESULT en caso de que haya algún alcance que no se haya cerrado,
+    o true si todo salió bien.

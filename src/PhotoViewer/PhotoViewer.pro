@@ -35,7 +35,18 @@ SOURCES += \
     MemoryViewer.cpp \
     socketmanager.cpp \
     TcpSocket.cpp \
-    OperationsManager.cpp
+    OperationsManager.cpp \
+    datatypes/Array.cpp \
+    datatypes/Structure.cpp \
+    structures/Lists/Scope.cpp \
+    structures/Lists/varstorage.cpp \
+    datatypes/Char.cpp \
+    datatypes/integer.cpp \
+    datatypes/long.cpp \
+    datatypes/float.cpp \
+    datatypes/double.cpp \
+    datatypes/reference.cpp \
+    datatypes/Booleano.cpp
 
 HEADERS += \
     MemoryManager/DiskAccess.h \
@@ -46,7 +57,19 @@ HEADERS += \
     launcher.h \
     socketmanager.h \
     TcpSocket.h \
-    OperationsManager.h
+    OperationsManager.h \
+    datatypes/Integer.h \
+    datatypes/Variable.h \
+    datatypes/Char.h \
+    datatypes/Long.h \
+    datatypes/Float.h \
+    datatypes/Double.h \
+    datatypes/Reference.h \
+    datatypes/Array.h \
+    datatypes/Structure.h \
+    structures/Lists/Scope.h \
+    structures/Lists/varstorage.h \
+    datatypes/Booleano.h
 
 FORMS += \
     launcher.ui \

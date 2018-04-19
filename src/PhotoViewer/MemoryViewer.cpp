@@ -45,8 +45,7 @@ void MemoryViewer::setPagesDiskSlot(MemoryManager::listNode * page) {
     pageRowDisk->setFlags(pageRowDisk->flags() ^ Qt::ItemIsEditable);
 
     if(page->used != 0){
-        double usedPorcent = page->used/1048576.0;
-        usedRowDisk = new QTableWidgetItem(QString::number(usedPorcent, 'f', 3));
+        usedRowDisk = new QTableWidgetItem(QString::number(page->used));
         usedRowDisk->setFlags(pageRowDisk->flags() ^ Qt::ItemIsEditable);
     }else{
         usedRowDisk = new QTableWidgetItem("0");
@@ -70,8 +69,7 @@ void MemoryViewer::setPagesMemSlot(MemoryManager::listNode * page) {
     pageRowMem->setFlags(pageRowMem->flags() ^ Qt::ItemIsEditable);
 
     if(page->used != 0){
-        double usedPorcent = page->used/1048576.0;
-        usedRowMem = new QTableWidgetItem(QString::number(usedPorcent, 'f', 3));
+        usedRowMem = new QTableWidgetItem(QString::number(page->used));
         usedRowMem->setFlags(usedRowMem->flags() ^ Qt::ItemIsEditable);
     }else{
         usedRowMem = new QTableWidgetItem("0");
@@ -83,14 +81,12 @@ void MemoryViewer::setPagesMemSlot(MemoryManager::listNode * page) {
 }
 
 void MemoryViewer::setTotalmemory(MemoryManager::listNode * page){
-    double totalMB = 0;
+    double totalB = 0;
     while(page != nullptr){
-        totalMB += page->used;
+        totalB += page->used;
         page = page->next;
     }
-
-    totalMB /= 1048576.0;
-    ui->lcd_TotalMem->display(totalMB);
+    ui->lcd_TotalMem->display(totalB);
 }
 
 

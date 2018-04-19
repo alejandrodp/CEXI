@@ -1,12 +1,11 @@
-#include <iostream>
-#include "SimpleList.h"
+#include "varstorage.h"
 
 /**
  * @brief Construct a new Simple List:: Simple List object
  * Este es el constructor de la lista Simple.
- * 
+ *
  */
-SimpleList::SimpleList() {
+VarStorage::VarStorage() {
     this->root = nullptr;
     this->size = 0;
 }
@@ -14,9 +13,9 @@ SimpleList::SimpleList() {
 /**
  * @brief Destroy the Simple List:: Simple List object
  * El destructor borra cada nodo que fue creado liberando la memoria.
- * 
+ *
  */
-SimpleList::~SimpleList(){
+VarStorage::~VarStorage(){
     if(this->size == 1){
         delete root;
         root = nullptr;
@@ -38,9 +37,9 @@ SimpleList::~SimpleList(){
  * Añade nuevos elementos a la lista en el final.
  * @param value El vlor quese desea añadir
  */
-void SimpleList::AddEnd(std::bitset<32> address){
-    struct Node* adding = new struct Node;
-    adding->address = address;
+void VarStorage::AddEnd(Variable * newVar){
+    struct Node * adding = new Node;
+    adding->var = newVar;
     adding->next = nullptr;
     if (root == nullptr){
          root = adding;
@@ -54,43 +53,41 @@ void SimpleList::AddEnd(std::bitset<32> address){
     this->size++;
 }
 
-void SimpleList::changeElm(std::bitset<32> value, int pos)
-{
-    Node * temp = this->root;
-
-    for(int i=0; i!=pos; i++){
-        temp = temp->next;
-    }
-
-    temp->address = value;
-}
-
 /**
  * @brief Get values of certain position
  * Obtiene elementos en una posición determinada
  * @param pos Posición en la lista
  * @return int El elemento solicitado
  */
-std::bitset<32> SimpleList::getValue(int pos){
-    if(pos == 0){
-        return root->address;
-    }else{
-        struct Node* searching = root;
-        for(int i=0; i<pos; i++){
-            searching = searching->next;
-        }
-        if(searching->next == nullptr) return searching->address; else return searching->next->address;
+Variable * VarStorage::getValue(int pos){
+    if(pos > size-1 || pos < 0) return nullptr;
+
+    Node * pivot = root;
+    for(int i=0; i!=pos; i++){
+        pivot = pivot->next;
     }
+
+    return pivot->var;
 }
 
 /**
  * @brief Get size of list
  * Obtiene el tamaño de la lista
- * @return int 
+ * @return int
  */
-int SimpleList::getSize(){
+int VarStorage::getSize(){
 
     return this->size;
 
 }
 
+Variable * VarStorage::getEndElm()
+{
+    Node * pivot = this->root;
+
+    while(pivot->next != nullptr){
+        pivot = pivot->next;
+    }
+
+    return pivot->var;
+}
