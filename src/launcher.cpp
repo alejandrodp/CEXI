@@ -6,7 +6,7 @@ int main() {
 
     Interpreter cexi;
 
-    cexi.run("/home/fabian/Documents/repos/datos2/CEX/examples/helloworld.cex");
+    cexi.run("    float    a =               1.3  ;         ");
 
     return 0;
 }

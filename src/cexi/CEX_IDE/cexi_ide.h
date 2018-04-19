@@ -15,8 +15,12 @@ public:
     explicit cexi_ide(QWidget *parent = 0);
     ~cexi_ide();
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::cexi_ide *ui;
+    QString getLine();
 };
 
 #endif // CEXI_IDE_H

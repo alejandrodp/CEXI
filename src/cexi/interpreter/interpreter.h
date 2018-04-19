@@ -42,6 +42,14 @@ public:
      */
     std::string preprocess(std::string code);
 
+    std::string reduce(const std::string& str,
+                   const std::string& fill = " ",
+                   const std::string& whitespace = " \t");
+
+    std::string trim(const std::string& str, const std::string& whitespace = " \t");
+
+    
+
 
 
 };

@@ -69,6 +69,13 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="plainText">
+         <string>int a = 1;
+
+char c;
+
+float b = 1.3;</string>
+        </property>
        </widget>
       </item>
       <item>
@@ -82,12 +89,12 @@
         <property name="currentIndex">
          <number>0</number>
         </property>
-        <widget class="QWidget" name="tab1" native="true">
+        <widget class="QWidget" name="tab1">
          <attribute name="title">
           <string>Standard output</string>
          </attribute>
         </widget>
-        <widget class="QWidget" name="tabWidgetPage2" native="true">
+        <widget class="QWidget" name="tabWidgetPage2">
          <attribute name="title">
           <string>System log</string>
          </attribute>
