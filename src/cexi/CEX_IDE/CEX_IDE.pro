@@ -32,3 +32,5 @@ HEADERS += \
 
 FORMS += \
         cexi_ide.ui
+
+RESOURCES +=

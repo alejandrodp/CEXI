@@ -6,115 +6,629 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1142</width>
-    <height>819</height>
+    <width>1044</width>
+    <height>651</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>cexi_ide</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QHBoxLayout" name="horizontalLayout_2">
-    <property name="leftMargin">
-     <number>9</number>
-    </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout" stretch="0,6,4">
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0,0,0">
-        <item>
-         <widget class="QPushButton" name="pushButton">
-          <property name="text">
-           <string>Run</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_2">
-          <property name="text">
-           <string>Stop</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_3">
-          <property name="text">
-           <string>Next Line</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Preferred</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <widget class="QPlainTextEdit" name="plainTextEdit">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="plainText">
-         <string>int a = 1;
-
-char c;
-
-float b = 1.3;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QTabWidget" name="tabWidget">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="currentIndex">
-         <number>0</number>
-        </property>
-        <widget class="QWidget" name="tab1">
-         <attribute name="title">
-          <string>Standard output</string>
-         </attribute>
-        </widget>
-        <widget class="QWidget" name="tabWidgetPage2">
-         <attribute name="title">
-          <string>System log</string>
-         </attribute>
-        </widget>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <widget class="QTableView" name="tableView">
+     <widget class="QSplitter" name="splitter_2">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="baseSize">
+       <size>
+        <width>100</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="childrenCollapsible">
+       <bool>true</bool>
+      </property>
+      <widget class="QSplitter" name="splitter">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Ignored" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="baseSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="midLineWidth">
+        <number>0</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="opaqueResize">
+        <bool>true</bool>
+       </property>
+       <property name="childrenCollapsible">
+        <bool>true</bool>
+       </property>
+       <widget class="QPlainTextEdit" name="plainTextEdit">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+          <horstretch>0</horstretch>
+          <verstretch>2</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>133</width>
+          <height>100</height>
+         </size>
+        </property>
+        <property name="baseSize">
+         <size>
+          <width>200</width>
+          <height>200</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QTabWidget" name="tabWidget">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="baseSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="currentIndex">
+         <number>1</number>
+        </property>
+        <widget class="QWidget" name="tab">
+         <property name="baseSize">
+          <size>
+           <width>0</width>
+           <height>20</height>
+          </size>
+         </property>
+         <attribute name="title">
+          <string>Output console</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout_5">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <widget class="QPushButton" name="pushButton_5">
+              <property name="text">
+               <string>Clean</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QPlainTextEdit" name="plainTextEdit_3">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="tab_2">
+         <attribute name="title">
+          <string>Log console</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QPushButton" name="pushButton_4">
+              <property name="text">
+               <string>Clean</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QPlainTextEdit" name="plainTextEdit_2">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="">
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QTreeWidget" name="treeWidget">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>20</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>1000</width>
+            <height>0</height>
+           </size>
+          </property>
+          <column>
+           <property name="text">
+            <string>Name</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Address</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Value</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Ref. Count</string>
+           </property>
+          </column>
+          <item>
+           <property name="text">
+            <string>Number</string>
+           </property>
+           <property name="text">
+            <string>0x8723487f872</string>
+           </property>
+           <property name="text">
+            <string>34</string>
+           </property>
+           <property name="text">
+            <string>1</string>
+           </property>
+           <item>
+            <property name="text">
+             <string>Ref1</string>
+            </property>
+            <property name="text">
+             <string>0x732478c7</string>
+            </property>
+            <property name="text">
+             <string>0x8723487f872</string>
+            </property>
+            <property name="text">
+             <string>0</string>
+            </property>
+           </item>
+          </item>
+         </widget>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QPushButton" name="pushButton">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="baseSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>Run program</string>
+            </property>
+            <property name="toolTipDuration">
+             <number>1</number>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>res/play-5-256.png</normaloff>res/play-5-256.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_3">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="baseSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>Next line</string>
+            </property>
+            <property name="toolTipDuration">
+             <number>1</number>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>res/arrow-31-256.png</normaloff>res/arrow-31-256.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_2">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="baseSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>Stop program</string>
+            </property>
+            <property name="toolTipDuration">
+             <number>1</number>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>res/square-256.png</normaloff>res/square-256.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEdit">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="baseSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <stylestrategy>PreferAntialias</stylestrategy>
+             </font>
+            </property>
+            <property name="autoFillBackground">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>Line: 34 | Col: 45</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+            <property name="clearButtonEnabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </item>
    </layout>
   </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1044</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionOpen"/>
+    <addaction name="actionClose"/>
+    <addaction name="separator"/>
+    <addaction name="actionSave_all"/>
+    <addaction name="actionSave_as"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="actionCopy"/>
+    <addaction name="actionCut"/>
+    <addaction name="actionPaste"/>
+   </widget>
+   <widget class="QMenu" name="menuRun">
+    <property name="title">
+     <string>Run</string>
+    </property>
+    <addaction name="actionRun"/>
+    <addaction name="actionStep"/>
+    <addaction name="actionStop"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuRun"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <action name="actionOpen">
+   <property name="icon">
+    <iconset>
+     <normaloff>res/open-in-browser-24.png</normaloff>res/open-in-browser-24.png</iconset>
+   </property>
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionClose">
+   <property name="icon">
+    <iconset>
+     <normaloff>res/close-window-24.png</normaloff>res/close-window-24.png</iconset>
+   </property>
+   <property name="text">
+    <string>Close</string>
+   </property>
+  </action>
+  <action name="actionSave_all">
+   <property name="icon">
+    <iconset>
+     <normaloff>res/save-24.png</normaloff>res/save-24.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save all</string>
+   </property>
+  </action>
+  <action name="actionSave_as">
+   <property name="icon">
+    <iconset>
+     <normaloff>res/save-as-24.png</normaloff>res/save-as-24.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save as...</string>
+   </property>
+  </action>
+  <action name="actionCopy">
+   <property name="icon">
+    <iconset>
+     <normaloff>res/copy-24.png</normaloff>res/copy-24.png</iconset>
+   </property>
+   <property name="text">
+    <string>Copy</string>
+   </property>
+  </action>
+  <action name="actionCut">
+   <property name="icon">
+    <iconset>
+     <normaloff>res/cut-24.png</normaloff>res/cut-24.png</iconset>
+   </property>
+   <property name="text">
+    <string>Cut</string>
+   </property>
+  </action>
+  <action name="actionPaste">
+   <property name="icon">
+    <iconset>
+     <normaloff>res/clipboard-8-24.png</normaloff>res/clipboard-8-24.png</iconset>
+   </property>
+   <property name="text">
+    <string>Paste</string>
+   </property>
+  </action>
+  <action name="actionRun">
+   <property name="icon">
+    <iconset>
+     <normaloff>res/play-5-256.png</normaloff>res/play-5-256.png</iconset>
+   </property>
+   <property name="text">
+    <string>Start</string>
+   </property>
+  </action>
+  <action name="actionStep">
+   <property name="icon">
+    <iconset>
+     <normaloff>res/arrow-31-256.png</normaloff>res/arrow-31-256.png</iconset>
+   </property>
+   <property name="text">
+    <string>Step</string>
+   </property>
+  </action>
+  <action name="actionStop">
+   <property name="icon">
+    <iconset>
+     <normaloff>res/square-256.png</normaloff>res/square-256.png</iconset>
+   </property>
+   <property name="text">
+    <string>Stop</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="icon">
+    <iconset>
+     <normaloff>res/about-24.png</normaloff>res/about-24.png</iconset>
+   </property>
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
