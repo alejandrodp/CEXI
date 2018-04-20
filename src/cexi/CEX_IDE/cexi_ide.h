@@ -8,6 +8,7 @@ class cexi_ide;
 }
 
 class QTcpSocket;
+class ConnectionConfig;
 
 class cexi_ide : public QMainWindow
 {
@@ -25,6 +26,10 @@ private slots:
 
     void on_actionServer_memory_triggered();
 
+    void on_button_start_clicked();
+
+    void on_button_connect_clicked();
+
 private:
     Ui::cexi_ide *ui;
     QString getLine();
@@ -32,6 +37,7 @@ private:
     QTcpSocket * clientSocket;
     QString * ipAddress;
     int * port;
+    ConnectionConfig * serverConfig;
 };
 
 #endif // CEXI_IDE_H

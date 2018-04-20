@@ -10,15 +10,22 @@ cexi_ide::cexi_ide(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::cexi_ide),
     clientSocket(new QTcpSocket(this)),
-    ipAddress(new QString("localhost")),
-    port(new int)
+    ipAddress(new QString("0.0.0.0")),
+    port(new int(0)),
+    serverConfig(new ConnectionConfig(this, ipAddress, port))
 {
     ui->setupUi(this);
     connect(clientSocket, &QTcpSocket::readyRead, [&](){
         QTextStream T(clientSocket);
         if(T.readAll() == "CONNECTION SUCCESFUL"){
             ui->plainText_log->appendPlainText("Server: " + T.readAll());
+            ui->label_connectionStatus->setText("Status: Connected");
         }
+    });
+
+    connect(serverConfig, &ConnectionConfig::serverConfig, [&](){
+        ui->label_ipAddress->setText(*ipAddress);
+        ui->label_port->setText(QString::number(*port));
     });
 }
 
@@ -54,9 +61,18 @@ void cexi_ide::on_plainText_editor_textChanged()
 
 void cexi_ide::on_actionServer_memory_triggered()
 {
-    ConnectionConfig c(this, ipAddress, port);
-    this->setDisabled(true);
-    c.show();
-    this->setDisabled(false);
 
+    serverConfig->show();
+}
+
+void cexi_ide::on_button_start_clicked()
+{
+    if(!clientSocket->isOpen()){
+        ui->plainText_log->appendPlainText("Server is disconnected.");
+    }
+}
+
+void cexi_ide::on_button_connect_clicked()
+{
+    clientSocket->connectToHost(*ipAddress, *port);
 }

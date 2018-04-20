@@ -20,5 +20,16 @@ ConnectionConfig::~ConnectionConfig()
 void ConnectionConfig::on_button_accept_clicked()
 {
 
+    *ip = ui->lineEdit_ipAddr->text();
 
+    *port = ui->spinBox_portNumber->value();
+
+    emit serverConfig();
+
+    close();
+}
+
+void ConnectionConfig::on_button_cancel_clicked()
+{
+    close();
 }
