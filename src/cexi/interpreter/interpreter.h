@@ -1,8 +1,9 @@
 #ifndef INTERPRETER
 #define INTERPRETER
 
-#include <iostream>
-#include <string>
+# include <string>
+# include <regex>
+# include <iostream>
 
 class Interpreter {
 public:
@@ -12,27 +13,7 @@ public:
      * 
      * @param path path to code
      */
-    void run(std::string path);
-
-    /**
-     * @brief interprets a single line of code
-     * 
-     * @param statement 
-     */
-    void interpret(std::string statement);
-
-    /**
-     * @brief reads a line
-     * 
-     * @param line line to be read
-     */
-    void readLine(std::string line);
-
-    /**
-     * @brief 
-     * 
-     */
-    bool contains(std::string text, std::string substring);
+    void run(const std::string& inPutLine);
 
     /**
      * @brief cleans the code
@@ -41,6 +22,12 @@ public:
      * @return std::string cleaned code
      */
     std::string preprocess(std::string code);
+
+    void parse_declaration_and_asignation(std::smatch match, std::string type);
+
+    void parse_declaration(std::smatch match, std::string type);
+
+    void parse_asignation(std::smatch match, std::string type);
 
     std::string reduce(const std::string& str,
                    const std::string& fill = " ",
