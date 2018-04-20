@@ -12,7 +12,7 @@ public:
      * 
      * @param path path to code
      */
-    void run(std::string path);
+    void run(const std::string& inPutLine);
 
     /**
      * @brief interprets a single line of code

@@ -1,17 +1,12 @@
 # include <string>
 # include <regex>
 # include <iostream>
-# include <sstream>
-# include <fstream>
-# include <iterator>
 # include "interpreter.h"
-# include <iostream>
-# include <string>
 
-void Interpreter::run(std::string inPutLine){
+void Interpreter::run(const std::string& inPutLine){
     using namespace std;
 
-    auto line = preprocess(inPutLine);
+    const std::string& line = preprocess(inPutLine);
 
     regex declare_and_assign ("(\\w+) (\\w+) *= *(.+) *;");
     regex declare ("(\\w+) (\\w+) *;");
@@ -33,21 +28,43 @@ void Interpreter::run(std::string inPutLine){
     
     if(regex_match(line, declare)){
         cout << "Declaration detected" << endl;
-
-        if(regex_match(line, declare_int)){
-            cout << "int declaration detected" << endl;
         
-        }else if(regex_match(line, declare_char)){
+        std::smatch match;
+
+        if(regex_search(line.begin(), line.end(), match,  declare_int)){
+            cout << "int declaration detected" << endl;
+
+            for (auto m : match){
+                std::cout << "  submatch " << m << '\n';
+            }
+        
+        }else if(regex_search(line.begin(), line.end(), match, declare_char)){
             cout << "char declaration detected" << endl;
 
-        }else if(regex_match(line, declare_float)){
+            for (auto m : match){
+                std::cout << "  submatch " << m << '\n';
+            }
+
+        }else if(regex_search(line.begin(), line.end(), match, declare_float)){
             cout << "float declaration detected" << endl;
 
-        }else if(regex_match(line, declare_double)){
+            for (auto m : match){
+                std::cout << "  submatch " << m << '\n';
+            }
+
+        }else if(regex_search(line.begin(), line.end(), match, declare_double)){
             cout << "double declaration detected" << endl;
 
-        }else if(regex_match(line, declare_long)){
+            for (auto m : match){
+                std::cout << "  submatch " << m << '\n';
+            }
+
+        }else if(regex_search(line.begin(), line.end(), match, declare_long)){
             cout << "long declaration detected" << endl;
+
+            for (auto m : match){
+                std::cout << "  submatch " << m << '\n';
+            }
             
         }else{
             cout << "Syntax error." << endl;
@@ -56,20 +73,42 @@ void Interpreter::run(std::string inPutLine){
     } else if (regex_match(line, declare_and_assign)){
         cout << "Declaration and assignation detected" << endl;
 
-        if(regex_match(line, declare_and_assign_int)){
-            cout << "int declaration and assignation detected" << endl; 
+        std::smatch match;
+
+        if(regex_search(line.begin(), line.end(), match, declare_and_assign_int)){
+            cout << "int declaration and assignation detected" << endl;
+
+            for (auto m : match){
+                std::cout << "  submatch " << m << '\n';
+            }
         
-        }else if(regex_match(line, declare_and_assign_char)){
+        }else if(regex_search(line.begin(), line.end(), match, declare_and_assign_char)){
             cout << "char declaration and assignation detected" << endl;
 
-        }else if(regex_match(line, declare_and_assign_float)){
+            for (auto m : match){
+                std::cout << "  submatch " << m << '\n';
+            }
+
+        }else if(regex_search(line.begin(), line.end(), match, declare_and_assign_float)){
             cout << "float declaration and assignation detected" << endl;
 
-        }else if(regex_match(line, declare_and_assign_double)){
+            for (auto m : match){
+                std::cout << "  submatch " << m << '\n';
+            }
+
+        }else if(regex_search(line.begin(), line.end(), match, declare_and_assign_double)){
             cout << "double declaration and assignation detected" << endl;
 
-        }else if(regex_match(line, declare_and_assign_long)){
+            for (auto m : match){
+                std::cout << "  submatch " << m << '\n';
+            }
+
+        }else if(regex_search(line.begin(), line.end(), match, declare_and_assign_long)){
             cout << "long declaration and assignation detected" << endl;
+
+            for (auto m : match){
+                std::cout << "  submatch " << m << '\n';
+            }
             
         }else{
             cout << "Syntax error." << endl;
