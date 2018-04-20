@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -25,12 +25,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        cexi_ide.cpp
+        cexi_ide.cpp \
+    ConnectionConfig.cpp
 
 HEADERS += \
-        cexi_ide.h
+        cexi_ide.h \
+    ConnectionConfig.h
 
 FORMS += \
-        cexi_ide.ui
+        cexi_ide.ui \
+    ConnectionConfig.ui
 
-RESOURCES +=
+RESOURCES += \
+    icons.qrc

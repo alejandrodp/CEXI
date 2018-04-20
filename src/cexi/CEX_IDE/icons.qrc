@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>res/about-24.png</file>
+        <file>res/action-redo-256.png</file>
+        <file>res/action-undo-256.png</file>
+        <file>res/arrow-31-24.png</file>
+        <file>res/arrow-31-256.png</file>
+        <file>res/Breezeicons-actions-22-edit-select-all.svg.png</file>
+        <file>res/clipboard-8-24.png</file>
+        <file>res/close-window-24.png</file>
+        <file>res/copy-24.png</file>
+        <file>res/cut-24.png</file>
+        <file>res/excerpt-24.png</file>
+        <file>res/open-in-browser-24.png</file>
+        <file>res/play-5-24.png</file>
+        <file>res/play-5-256.png</file>
+        <file>res/save-24.png</file>
+        <file>res/save-as-24.png</file>
+        <file>res/square-24.png</file>
+        <file>res/square-256.png</file>
+        <file>res/window-apps-24.png</file>
+        <file>res/select_all_grey_192x192.png</file>
+        <file>res/server_hosting_network_computer-256.png</file>
+    </qresource>
+</RCC>

@@ -15,6 +15,21 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
     <item>
      <widget class="QSplitter" name="splitter_2">
       <property name="sizePolicy">
@@ -37,6 +52,9 @@
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="handleWidth">
+       <number>1</number>
       </property>
       <property name="childrenCollapsible">
        <bool>true</bool>
@@ -75,10 +93,13 @@
        <property name="opaqueResize">
         <bool>true</bool>
        </property>
+       <property name="handleWidth">
+        <number>1</number>
+       </property>
        <property name="childrenCollapsible">
         <bool>true</bool>
        </property>
-       <widget class="QPlainTextEdit" name="plainTextEdit">
+       <widget class="QPlainTextEdit" name="plainText_editor">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
           <horstretch>0</horstretch>
@@ -112,7 +133,7 @@
          </size>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="tab">
          <property name="baseSize">
@@ -143,7 +164,7 @@
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_3">
             <item>
-             <widget class="QPushButton" name="pushButton_5">
+             <widget class="QPushButton" name="button_cleanOutput">
               <property name="text">
                <string>Clean</string>
               </property>
@@ -165,7 +186,7 @@
            </layout>
           </item>
           <item>
-           <widget class="QPlainTextEdit" name="plainTextEdit_3">
+           <widget class="QPlainTextEdit" name="plainText_output">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -199,7 +220,7 @@
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_2">
             <item>
-             <widget class="QPushButton" name="pushButton_4">
+             <widget class="QPushButton" name="button_cleanLog">
               <property name="text">
                <string>Clean</string>
               </property>
@@ -221,7 +242,7 @@
            </layout>
           </item>
           <item>
-           <widget class="QPlainTextEdit" name="plainTextEdit_2">
+           <widget class="QPlainTextEdit" name="plainText_log">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -234,13 +255,13 @@
         </widget>
        </widget>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <property name="spacing">
          <number>0</number>
         </property>
         <item>
-         <widget class="QTreeWidget" name="treeWidget">
+         <widget class="QTreeWidget" name="treeView_varTable">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
             <horstretch>0</horstretch>
@@ -312,7 +333,7 @@
         <item>
          <layout class="QVBoxLayout" name="verticalLayout">
           <item>
-           <widget class="QPushButton" name="pushButton">
+           <widget class="QPushButton" name="button_start">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
               <horstretch>0</horstretch>
@@ -341,8 +362,8 @@
              <string/>
             </property>
             <property name="icon">
-             <iconset>
-              <normaloff>res/play-5-256.png</normaloff>res/play-5-256.png</iconset>
+             <iconset resource="icons.qrc">
+              <normaloff>:/images/res/play-5-256.png</normaloff>:/images/res/play-5-256.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -353,7 +374,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_3">
+           <widget class="QPushButton" name="button_step">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
               <horstretch>0</horstretch>
@@ -382,8 +403,8 @@
              <string/>
             </property>
             <property name="icon">
-             <iconset>
-              <normaloff>res/arrow-31-256.png</normaloff>res/arrow-31-256.png</iconset>
+             <iconset resource="icons.qrc">
+              <normaloff>:/images/res/arrow-31-256.png</normaloff>:/images/res/arrow-31-256.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -394,7 +415,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_2">
+           <widget class="QPushButton" name="button_stop">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
               <horstretch>0</horstretch>
@@ -423,8 +444,8 @@
              <string/>
             </property>
             <property name="icon">
-             <iconset>
-              <normaloff>res/square-256.png</normaloff>res/square-256.png</iconset>
+             <iconset resource="icons.qrc">
+              <normaloff>:/images/res/square-256.png</normaloff>:/images/res/square-256.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -435,7 +456,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit">
+           <widget class="QLineEdit" name="lineEdit_lineandcol">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
               <horstretch>0</horstretch>
@@ -459,14 +480,23 @@
               <stylestrategy>PreferAntialias</stylestrategy>
              </font>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
+            <property name="contextMenuPolicy">
+             <enum>Qt::NoContextMenu</enum>
+            </property>
             <property name="autoFillBackground">
-             <bool>false</bool>
+             <bool>true</bool>
             </property>
             <property name="text">
-             <string>Line: 34 | Col: 45</string>
+             <string>Line: 0 | Col: 0</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
+            </property>
+            <property name="dragEnabled">
+             <bool>false</bool>
             </property>
             <property name="readOnly">
              <bool>true</bool>
@@ -510,6 +540,11 @@
     <addaction name="actionCopy"/>
     <addaction name="actionCut"/>
     <addaction name="actionPaste"/>
+    <addaction name="separator"/>
+    <addaction name="actionUndo"/>
+    <addaction name="actionRedo"/>
+    <addaction name="separator"/>
+    <addaction name="actionSelect_all"/>
    </widget>
    <widget class="QMenu" name="menuRun">
     <property name="title">
@@ -518,6 +553,15 @@
     <addaction name="actionRun"/>
     <addaction name="actionStep"/>
     <addaction name="actionStop"/>
+   </widget>
+   <widget class="QMenu" name="menuSettings">
+    <property name="title">
+     <string>Settings</string>
+    </property>
+    <addaction name="actionDark_mode"/>
+    <addaction name="actionLive_checker"/>
+    <addaction name="separator"/>
+    <addaction name="actionServer_memory"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -528,12 +572,13 @@
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
    <addaction name="menuRun"/>
+   <addaction name="menuSettings"/>
    <addaction name="menuHelp"/>
   </widget>
   <action name="actionOpen">
    <property name="icon">
-    <iconset>
-     <normaloff>res/open-in-browser-24.png</normaloff>res/open-in-browser-24.png</iconset>
+    <iconset resource="icons.qrc">
+     <normaloff>:/images/res/open-in-browser-24.png</normaloff>:/images/res/open-in-browser-24.png</iconset>
    </property>
    <property name="text">
     <string>Open</string>
@@ -541,8 +586,8 @@
   </action>
   <action name="actionClose">
    <property name="icon">
-    <iconset>
-     <normaloff>res/close-window-24.png</normaloff>res/close-window-24.png</iconset>
+    <iconset resource="icons.qrc">
+     <normaloff>:/images/res/close-window-24.png</normaloff>:/images/res/close-window-24.png</iconset>
    </property>
    <property name="text">
     <string>Close</string>
@@ -550,8 +595,8 @@
   </action>
   <action name="actionSave_all">
    <property name="icon">
-    <iconset>
-     <normaloff>res/save-24.png</normaloff>res/save-24.png</iconset>
+    <iconset resource="icons.qrc">
+     <normaloff>:/images/res/save-24.png</normaloff>:/images/res/save-24.png</iconset>
    </property>
    <property name="text">
     <string>Save all</string>
@@ -559,8 +604,8 @@
   </action>
   <action name="actionSave_as">
    <property name="icon">
-    <iconset>
-     <normaloff>res/save-as-24.png</normaloff>res/save-as-24.png</iconset>
+    <iconset resource="icons.qrc">
+     <normaloff>:/images/res/save-as-24.png</normaloff>:/images/res/save-as-24.png</iconset>
    </property>
    <property name="text">
     <string>Save as...</string>
@@ -568,8 +613,8 @@
   </action>
   <action name="actionCopy">
    <property name="icon">
-    <iconset>
-     <normaloff>res/copy-24.png</normaloff>res/copy-24.png</iconset>
+    <iconset resource="icons.qrc">
+     <normaloff>:/images/res/copy-24.png</normaloff>:/images/res/copy-24.png</iconset>
    </property>
    <property name="text">
     <string>Copy</string>
@@ -577,8 +622,8 @@
   </action>
   <action name="actionCut">
    <property name="icon">
-    <iconset>
-     <normaloff>res/cut-24.png</normaloff>res/cut-24.png</iconset>
+    <iconset resource="icons.qrc">
+     <normaloff>:/images/res/cut-24.png</normaloff>:/images/res/cut-24.png</iconset>
    </property>
    <property name="text">
     <string>Cut</string>
@@ -586,8 +631,8 @@
   </action>
   <action name="actionPaste">
    <property name="icon">
-    <iconset>
-     <normaloff>res/clipboard-8-24.png</normaloff>res/clipboard-8-24.png</iconset>
+    <iconset resource="icons.qrc">
+     <normaloff>:/images/res/clipboard-8-24.png</normaloff>:/images/res/clipboard-8-24.png</iconset>
    </property>
    <property name="text">
     <string>Paste</string>
@@ -595,8 +640,8 @@
   </action>
   <action name="actionRun">
    <property name="icon">
-    <iconset>
-     <normaloff>res/play-5-256.png</normaloff>res/play-5-256.png</iconset>
+    <iconset resource="icons.qrc">
+     <normaloff>:/images/res/play-5-256.png</normaloff>:/images/res/play-5-256.png</iconset>
    </property>
    <property name="text">
     <string>Start</string>
@@ -604,8 +649,8 @@
   </action>
   <action name="actionStep">
    <property name="icon">
-    <iconset>
-     <normaloff>res/arrow-31-256.png</normaloff>res/arrow-31-256.png</iconset>
+    <iconset resource="icons.qrc">
+     <normaloff>:/images/res/arrow-31-256.png</normaloff>:/images/res/arrow-31-256.png</iconset>
    </property>
    <property name="text">
     <string>Step</string>
@@ -613,24 +658,86 @@
   </action>
   <action name="actionStop">
    <property name="icon">
-    <iconset>
-     <normaloff>res/square-256.png</normaloff>res/square-256.png</iconset>
+    <iconset resource="icons.qrc">
+     <normaloff>:/images/res/square-256.png</normaloff>:/images/res/square-256.png</iconset>
    </property>
    <property name="text">
     <string>Stop</string>
    </property>
   </action>
+  <action name="actionUndo">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/images/res/action-undo-256.png</normaloff>:/images/res/action-undo-256.png</iconset>
+   </property>
+   <property name="text">
+    <string>Undo</string>
+   </property>
+  </action>
+  <action name="actionRedo">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/images/res/action-redo-256.png</normaloff>:/images/res/action-redo-256.png</iconset>
+   </property>
+   <property name="text">
+    <string>Redo</string>
+   </property>
+  </action>
+  <action name="actionSelect_all">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/images/res/Breezeicons-actions-22-edit-select-all.svg.png</normaloff>:/images/res/Breezeicons-actions-22-edit-select-all.svg.png</iconset>
+   </property>
+   <property name="text">
+    <string>Select all</string>
+   </property>
+  </action>
+  <action name="actionDark_mode">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/images/res/window-apps-24.png</normaloff>:/images/res/window-apps-24.png</iconset>
+   </property>
+   <property name="text">
+    <string>Dark mode</string>
+   </property>
+  </action>
+  <action name="actionLive_checker">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/images/res/excerpt-24.png</normaloff>:/images/res/excerpt-24.png</iconset>
+   </property>
+   <property name="text">
+    <string>Live checker</string>
+   </property>
+  </action>
   <action name="actionAbout">
    <property name="icon">
-    <iconset>
-     <normaloff>res/about-24.png</normaloff>res/about-24.png</iconset>
+    <iconset resource="icons.qrc">
+     <normaloff>:/images/res/about-24.png</normaloff>:/images/res/about-24.png</iconset>
    </property>
    <property name="text">
     <string>About</string>
    </property>
   </action>
+  <action name="actionServer_memory">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/images/res/server_hosting_network_computer-256.png</normaloff>:/images/res/server_hosting_network_computer-256.png</iconset>
+   </property>
+   <property name="text">
+    <string>Server memory</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="icons.qrc"/>
+ </resources>
  <connections/>
 </ui>
