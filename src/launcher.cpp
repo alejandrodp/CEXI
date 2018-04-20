@@ -6,7 +6,7 @@ int main() {
 
     Interpreter cexi;
 
-    cexi.run("    int    a = 2;         ");
+    cexi.run("//    int =   5;         ");
 
     return 0;
 }
