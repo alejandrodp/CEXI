@@ -5,6 +5,7 @@
 #include <QTextDocument>
 #include <QTcpSocket>
 #include "ConnectionConfig.h"
+#include <string>
 
 cexi_ide::cexi_ide(QWidget *parent) :
     QMainWindow(parent),
@@ -12,6 +13,7 @@ cexi_ide::cexi_ide(QWidget *parent) :
     clientSocket(new QTcpSocket(this)),
     ipAddress(new QString("0.0.0.0")),
     port(new int(0)),
+    started(false),
     serverConfig(new ConnectionConfig(this, ipAddress, port))
 {
     ui->setupUi(this);
@@ -67,12 +69,27 @@ void cexi_ide::on_actionServer_memory_triggered()
 
 void cexi_ide::on_button_start_clicked()
 {
+    ui->plainText_editor->setReadOnly(true);
+    this->started = true;
+    on_button_step_clicked();
     if(!clientSocket->isOpen()){
         ui->plainText_log->appendPlainText("Server is disconnected.");
+    } else {
+
     }
 }
 
 void cexi_ide::on_button_connect_clicked()
 {
     clientSocket->connectToHost(*ipAddress, *port);
+}
+
+void cexi_ide::on_button_step_clicked()
+{
+    if(this->started){ 
+        this->interpreter.run(this->getLine().toStdString());
+        this->lineCounter++;
+    } else {
+        ui->plainText_log->appendPlainText("Debugging hasn't started.");
+    }
 }

@@ -2,6 +2,7 @@
 #define CEXI_IDE_H
 
 #include <QMainWindow>
+#include "../interpreter/interpreter.h"
 
 namespace Ui {
 class cexi_ide;
@@ -29,7 +30,9 @@ private slots:
     void on_button_start_clicked();
 
     void on_button_connect_clicked();
-
+    
+    void on_button_step_clicked();
+    
 private:
     Ui::cexi_ide *ui;
     QString getLine();
@@ -38,6 +41,9 @@ private:
     QString * ipAddress;
     int * port;
     ConnectionConfig * serverConfig;
+    bool started;
+    Interpreter interpreter;
+    
 };
 
 #endif // CEXI_IDE_H

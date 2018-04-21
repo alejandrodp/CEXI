@@ -26,11 +26,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         cexi_ide.cpp \
-    ConnectionConfig.cpp
+    ConnectionConfig.cpp \
+    ../interpreter/calculator.cpp \
+    ../interpreter/interpreter.cpp
 
 HEADERS += \
         cexi_ide.h \
-    ConnectionConfig.h
+    ConnectionConfig.h \
+    ../interpreter/calculator.h \
+    ../interpreter/interpreter.h
 
 FORMS += \
         cexi_ide.ui \
