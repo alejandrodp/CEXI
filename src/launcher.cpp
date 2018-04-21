@@ -6,7 +6,7 @@ int main() {
 
     Interpreter cexi;
 
-    cexi.run(" int a ;         ");
+    cexi.run("name = getAddr(asdf) ;");
 
     return 0;
 }

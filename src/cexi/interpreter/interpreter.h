@@ -31,6 +31,12 @@ public:
 
     static void parse_asignation(std::smatch match, std::string type);
 
+    static void parse_reference_declaration(std::smatch match, std::string type);
+
+    static void parse_reference_declaration_and_assignation(std::smatch match, std::string type);
+
+    static void parse_reference_assignation(std::smatch match);
+
     static std::string reduce(const std::string& str,
                    const std::string& fill = " ",
                    const std::string& whitespace = " \t");
