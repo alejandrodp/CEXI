@@ -15,8 +15,8 @@ void Interpreter::run(const std::string& inPutLine){
     regex declare ("(\\w+) +(\\w+) *;");
     regex assign ("(\\w+) *= *(.+) *;");
     regex declare_reference ("reference<\\w+> *(\\w+) *;");
-    regex assign_reference ("\(\\w+\) *= *getAddr\(\\w+\) *;");
-    regex assign_and_declare_reference ("reference<\\w+> +(\\w+) *= *getAddr\(\\w+\) *;");
+    regex assign_reference ("(\\w+) *= *getAddr\\((\\w+)\) *;"); //\(\w+\) *= *getAddr\(\w+\) *;
+    regex assign_and_declare_reference ("reference<\\w+> +(\\w+) *= *getAddr\\(\\w+\\) *;");
 
     regex declare_and_assign_int ("int +(\\w+) *= *(\\d+) *;");
     regex declare_int ("int +(\\w+) *;");
@@ -80,6 +80,20 @@ void Interpreter::run(const std::string& inPutLine){
 
             parse_declaration(match, "long");           
             
+        } else{
+            cout << "Syntax error." << endl;
+        }
+
+    } else if (regex_match(line, assign_reference)){
+        cout << "Reference assignation detected" << endl;
+
+        smatch match;
+
+        if(regex_search(line.begin(), line.end(), match,  assign_reference)){
+            cout << "Reference assignation detected" << endl;
+
+            parse_reference_assignation(match); 
+        
         } else{
             cout << "Syntax error." << endl;
         }
@@ -220,23 +234,7 @@ void Interpreter::run(const std::string& inPutLine){
             cout << "Syntax error." << endl;
         }
 
-    } else if (regex_match(line, assign_reference)){
-        cout << "Reference assignation detected" << endl;
-
-        smatch match;
-
-        if(regex_search(line.begin(), line.end(), match,  assign_reference)){
-            cout << "Reference assignation detected" << endl;
-
-            parse_reference_assignation(match); 
-        
-        } else{
-            cout << "Syntax error." << endl;
-        }
-
-    } 
-    
-    else if (regex_match(line, comment)){
+    } else if (regex_match(line, comment)){
         cout << "Comment detected" << endl;
         return;
 

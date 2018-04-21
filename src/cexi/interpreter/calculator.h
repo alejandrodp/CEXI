@@ -21,10 +21,7 @@ public:
     bool gte(double a, double b);
 
     bool lt(double a, double b);
-    bool lte(double a, double b);
-
-    
-    
+    bool lte(double a, double b); 
 };
 
 
